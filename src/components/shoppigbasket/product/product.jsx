@@ -32,9 +32,9 @@ const Shopping_b_Product = ({ product }) => {
             <CardContent
                 sx={{ px: 2, py: 2, display: 'flex', flexDirection: 'column' }}>
 
-                <Link to={`/product/${product.id}`}>
+                <Link sx={{color:'inherit', textDecoration:'none'}} to={`/onlineshop-nini/product/${product.id}`}>
 
-                    <Typography variant='p' component="div" sx={{ fontWeight: 'bold', mb: 1, textDecoration: 'none' , fontFamily:'gandom' }}>{product.title}</Typography>
+                    <Typography variant='p' component="div" sx={{ fontWeight: 'bold', mb: 1, textDecoration: 'none' , fontFamily:'gandom' , color:'black' }}>{product.title}</Typography>
 
                 </Link>
 

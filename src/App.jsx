@@ -9,6 +9,8 @@ import Shoppingbasket from "./pages/Shoppingbasket/ShoppingBasket";
 import store from "./redux/store";
 import PrivateRoute from "./navigation/PrivateRoute";
 import Notfound from "./components/Notfound/Notfoundcomponents";
+import ProductDetails from "./pages/productdetail/ProductDetails";
+
 
 const Apptest = () => {
 
@@ -32,13 +34,16 @@ const Apptest = () => {
 
                         <Route path='/onlineshop-nini/Home' element={<Home />} />
 
-                        <Route path="/onlineshop-nini/profile" element={<Profile/>}  />
+                        <Route path="/onlineshop-nini/profile" element={<Profile />} />
 
-                        <Route path="/onlineshop-nini/products" element={<Products/>}/>
+                        <Route path="/onlineshop-nini/products" element={<Products />} />
 
-                        <Route path="/onlineshop-nini/Shoppingbasket" element={<PrivateRoute><Shoppingbasket/></PrivateRoute>}/>
+                        <Route path="/onlineshop-nini/product/:id" element={<ProductDetails />}/>
 
-                        <Route path="/onlineshop-nini/*" element={<Notfound/>}/>
+
+                        <Route path="/onlineshop-nini/Shoppingbasket" element={<PrivateRoute><Shoppingbasket /></PrivateRoute>} />
+
+                        <Route path="/onlineshop-nini/*" element={<Notfound />} />
                     </Routes>
 
                 </Router>
