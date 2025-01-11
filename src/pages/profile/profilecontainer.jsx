@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from 'react-redux';
-import Userprofile from "../../components/auth/userprofile/userprofile";
+import Userprofile from "../../components/auth/userprofile/Userprofile";
 import Login from "../../components/auth/login/Login";
 import Signup from "../../components/auth/signup/Signup";
 
