@@ -3,12 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from "react-redux";
 import './styles/style.css'
 import Home from "./pages/Home/Home";
-import store from "./redux/store";
-import PrivateRoute from "./navigation/PrivateRoute";
-import Profile from './pages/profile/Profile';
+import Profile from "./pages/profile/Profile";
 import Products from "./pages/Products/products";
 import Shoppingbasket from "./pages/Shoppingbasket/ShoppingBasket";
-
+import store from "./redux/store";
+import PrivateRoute from "./navigation/PrivateRoute";
 
 const Apptest = () => {
 
