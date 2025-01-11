@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Card, CardContent, CardMedia, Typography , Link } from '@mui/material';
+import { Button, Card, CardContent, CardMedia, Typography  } from '@mui/material';
+import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { removeItem } from "../../../redux/reducers/CartReducer";
 
