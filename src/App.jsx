@@ -8,6 +8,7 @@ import Products from "./pages/Products/products";
 import Shoppingbasket from "./pages/Shoppingbasket/ShoppingBasket";
 import store from "./redux/store";
 import PrivateRoute from "./navigation/PrivateRoute";
+import Notfound from "./components/Notfound/Notfoundcomponents";
 
 const Apptest = () => {
 
@@ -36,6 +37,8 @@ const Apptest = () => {
                         <Route path="/onlineshop-nini/products" element={<Products/>}/>
 
                         <Route path="/onlineshop-nini/Shoppingbasket" element={<PrivateRoute><Shoppingbasket/></PrivateRoute>}/>
+
+                        <Route path="/onlineshop-nini/*" element={<Notfound/>}/>
                     </Routes>
 
                 </Router>
