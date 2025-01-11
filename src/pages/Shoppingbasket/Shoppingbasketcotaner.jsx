@@ -1,9 +1,9 @@
 import React from "react";
-import { useSelector , useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProductGrid from "../../components/shoppigbasket/shoppingbasketgrid/shoppingbasketgrid";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footercontaier";
-import { Box, Container ,Button } from "@mui/material";
+import { Box, Container, Button , Typography } from "@mui/material";
 import { clearCart } from "../../redux/reducers/CartReducer";
 
 
@@ -27,15 +27,18 @@ const Shoppingbasketcontainer = () => {
                 <Box
                     sx={{
                         display: 'flex',
-                        flexDirection:'column',
-                        justifyContent:'center',
-                        alignItems:'center',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                         gap: 4,
                         mb: 10,
                     }}
                 >
 
-                    <Button
+                    {cartItems.length !== 0 ?
+
+<>
+                        <Button
                         variant="contained"
                         color="error"
                         onClick={() => dispatch(clearCart())}
@@ -53,6 +56,23 @@ const Shoppingbasketcontainer = () => {
                     >
                         تکمیل خرید
                     </Button>
+
+                    </>
+                        :
+
+                        <Typography
+                            component="h1"
+                            sx={{
+                                textAlign: 'center',
+                                color: 'red',
+                                fontSize: '2rem',
+                                fontWeight: 'bold',
+                                fontFamily: 'gandom'
+                            }}
+                        >
+                            بزن بریم خرید!
+                        </Typography>
+                    }
 
                 </Box>
 
