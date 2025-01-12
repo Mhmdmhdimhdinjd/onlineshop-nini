@@ -10,10 +10,34 @@ const Signup = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSignup = () => {
+
+    let hasError = false;
+    if (!username) {
+      setUsernameError(true);
+      hasError = true;
+    } else {
+      setUsernameError(false);
+    }
+
+    if (!password) {
+      setPasswordError(true);
+      hasError = true;
+    } else {
+      setPasswordError(false);
+    }
+
+    if (hasError) {
+      setErrorMessage('باید در فیلد ها چیزی وارد کنید');
+      return;
+    }
+
     let redirectPath = localStorage.getItem('userredirect');
     const user = { username, password };
     dispatch(registerUser(user));
@@ -40,7 +64,13 @@ const Signup = () => {
       <TextField
         label="نام کاربری"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => {
+          setUsername(e.target.value)
+          setErrorMessage('');
+          setUsernameError(false);
+        }}
+        error={usernameError} 
+        helperText={usernameError && "این فیلد نباید خالی باشد"}
         sx={{
           mb: 2,
           borderRadius: 1,
@@ -51,12 +81,23 @@ const Signup = () => {
         type="password"
         label='رمز عبور'
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          setPassword(e.target.value)
+          setErrorMessage('');
+          setPasswordError(false)
+        }}
+        error={passwordError} 
+        helperText={passwordError && "این فیلد نباید خالی باشد"}
         sx={{
           mb: 2,
           borderRadius: 1,
         }}
       />
+
+      {errorMessage && (
+        <Typography color="error" sx={{ mb: 2, fontFamily: 'gandom' }}>
+          {errorMessage}
+        </Typography>)}
 
       <Button
         size="large"
