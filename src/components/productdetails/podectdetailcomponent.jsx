@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import { Typography, Box, Button } from '@mui/material';
-
+import { useSelector } from 'react-redux';
 
 const Productdetailcomponents = ({ product, addToCart }) => {
 
   const [added, setAdded] = useState(false)
 
+  const logeduser = useSelector((state) => state.auth.logeduser);
 
   const handleAddToCart = (product) => {
 
@@ -32,8 +33,10 @@ const Productdetailcomponents = ({ product, addToCart }) => {
             </Typography>
             <Box display="flex" flexDirection="column" alignItems="center" mt={6}>
               <Typography>{product.price} $</Typography>
-              <Button variant="contained" color={added ? "success" : "primary"} fullWidth style={{ marginTop: '10px' }} onClick={() => handleAddToCart(product)}>
-                {added ? "به سبد خرید افزوده شد" : "افزودن به سبد خرید"}
+              <Button variant="contained" color={logeduser ? (added ? "success" : "primary") : 'error'} fullWidth style={{ marginTop: '10px' }} onClick={logeduser && (() => handleAddToCart(product))} >
+              
+              {logeduser ? (added ? "به سبد خرید افزوده شد" : "افزودن به سبد خرید") : 'برای خرید به حساب خود وارد شوید'}
+                
               </Button>
             </Box>
           </Box>

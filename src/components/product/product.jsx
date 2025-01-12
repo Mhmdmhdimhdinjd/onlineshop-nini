@@ -1,7 +1,7 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 import { addItem } from '/src/redux/reducers/CartReducer';
 
 
@@ -10,17 +10,19 @@ const Product = ({ product }) => {
 
     const [added, setAdded] = useState(false)
 
+    const logeduser = useSelector((state) => state.auth.logeduser);
+
     const dispatch = useDispatch();
 
     const handleAddToCart = (product) => {
-        
+
         dispatch(addItem(product));
 
         setAdded(true);
         setTimeout(() => {
             setAdded(false);
         }, 2000);
-        
+
     };
 
 
@@ -62,9 +64,9 @@ const Product = ({ product }) => {
                 </Typography>
 
 
-                <Button variant="contained" color={added ? "success" : "primary"} sx={{ borderRadius: 0, fontFamily: 'gandom', width: '100%' }} onClick={() => handleAddToCart(product)} >
+                <Button variant="contained" color={logeduser ? (added ? "success" : "primary") : 'error'} sx={{ borderRadius: 0, fontFamily: 'gandom', width: '100%' }} onClick={logeduser && (() => handleAddToCart(product))} >
 
-                    {added ? "به سبد خرید افزوده شد" : "افزودن به سبد خرید"}
+                    {logeduser ? (added ? "به سبد خرید افزوده شد" : "افزودن به سبد خرید") : 'برای خرید به حساب خود وارد شوید'}
 
                 </Button>
 
